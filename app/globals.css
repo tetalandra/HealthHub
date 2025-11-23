@@ -1,26 +1,60 @@
-@import "tailwindcss";
+/* globals.css */
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================
+   Custom Fonts & Root Variables
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary: #7c5cff;
+  --secondary: #00c2ff;
+  --accent: #1e90ff;
+  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #7c5cff;
+    --secondary: #00c2ff;
+    --accent: #1e90ff;
   }
 }
 
-body {
+/* ==========================
+   Base Styles
+========================== */
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
 }
+
+/* ==========================
+   Custom Animations
+========================== */
+@keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fade-left { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fade-right { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+
+.animate-fade-up { animation: fade-up 0.8s ease-out both; }
+.animate-fade-left { animation: fade-left 0.8s ease-out both; }
+.animate-fade-right { animation: fade-right 0.8s ease-out both; }
+.animate-scale-in { animation: scale-in 0.6s ease-out both; }
+.animate-float { animation: float 4s ease-in-out infinite; }
